@@ -63,17 +63,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 处理下拉菜单
+    // 处理下拉菜单 - 移动端也直接跳转
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
         const dropdownLink = dropdown.querySelector('a');
-        dropdownLink.addEventListener('click', function(e) {
-            // 在移动端阻止默认行为，显示下拉菜单
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            }
-        });
+        
+        // 移动端也允许直接跳转，不展开子菜单
+        // 如果需要子菜单，用户可以长按或通过其他方式访问
+        
+        // 鼠标悬停时在桌面显示下拉菜单（CSS已处理）
+        // 移动端直接跳转到主页面
     });
 
     // 点击菜单外部关闭菜单
