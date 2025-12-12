@@ -41,44 +41,50 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileMenuToggle.setAttribute('aria-label', 'Toggle menu');
     mobileMenuToggle.innerHTML = '<span></span><span></span><span></span>';
     
-    // 将汉堡按钮插入到导航栏
-    const logoDiv = document.querySelector('.logo');
-    if (logoDiv && logoDiv.parentElement) {
-        logoDiv.parentElement.insertBefore(mobileMenuToggle, logoDiv.nextSibling);
+    // 将汉堡按钮插入到导航栏的末尾
+    if (navbar) {
+        navbar.appendChild(mobileMenuToggle);
     }
 
     // 汉堡菜单功能
     const navLinks = document.querySelector('.nav-links');
     
-    mobileMenuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
 
     // 点击导航链接后关闭菜单
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
+    if (navLinks) {
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenuToggle) {
+                    mobileMenuToggle.classList.remove('active');
+                }
+                navLinks.classList.remove('active');
+            });
         });
-    });
-
-    // 处理下拉菜单 - 移动端也直接跳转
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-        const dropdownLink = dropdown.querySelector('a');
-        
-        // 移动端也允许直接跳转，不展开子菜单
-        // 如果需要子菜单，用户可以长按或通过其他方式访问
-        
-        // 鼠标悬停时在桌面显示下拉菜单（CSS已处理）
-        // 移动端直接跳转到主页面
-    });
+    }
 
     // 点击菜单外部关闭菜单
+    document.addEventListener('touchstart', function(event) {
+        if (navbar && !navbar.contains(event.target) && navLinks) {
+            if (mobileMenuToggle) {
+                mobileMenuToggle.classList.remove('active');
+            }
+            navLinks.classList.remove('active');
+        }
+    });
+    
     document.addEventListener('click', function(event) {
-        if (!navbar.contains(event.target)) {
-            mobileMenuToggle.classList.remove('active');
+        if (navbar && !navbar.contains(event.target) && navLinks) {
+            if (mobileMenuToggle) {
+                mobileMenuToggle.classList.remove('active');
+            }
             navLinks.classList.remove('active');
         }
     });
