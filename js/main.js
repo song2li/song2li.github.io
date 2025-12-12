@@ -35,6 +35,55 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScroll = currentScroll;
     });
 
+    // 创建并添加汉堡菜单按钮
+    const mobileMenuToggle = document.createElement('button');
+    mobileMenuToggle.className = 'mobile-menu-toggle';
+    mobileMenuToggle.setAttribute('aria-label', 'Toggle menu');
+    mobileMenuToggle.innerHTML = '<span></span><span></span><span></span>';
+    
+    // 将汉堡按钮插入到导航栏
+    const logoDiv = document.querySelector('.logo');
+    if (logoDiv && logoDiv.parentElement) {
+        logoDiv.parentElement.insertBefore(mobileMenuToggle, logoDiv.nextSibling);
+    }
+
+    // 汉堡菜单功能
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // 点击导航链接后关闭菜单
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // 处理下拉菜单
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const dropdownLink = dropdown.querySelector('a');
+        dropdownLink.addEventListener('click', function(e) {
+            // 在移动端阻止默认行为，显示下拉菜单
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // 点击菜单外部关闭菜单
+    document.addEventListener('click', function(event) {
+        if (!navbar.contains(event.target)) {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+
     // 创建回到顶部按钮
     const backToTopBtn = document.createElement('button');
     backToTopBtn.id = 'backToTop';
