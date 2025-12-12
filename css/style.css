@@ -572,36 +572,43 @@ footer {
 @media (max-width: 768px) {
     /* 导航栏 */
     .navbar {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem 1.5rem;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        padding: 1rem 1.5rem !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .logo {
+        flex: 1;
     }
 
     .logo h1 {
-        font-size: 0.9rem;
-        text-align: left;
-        margin-bottom: 0;
+        font-size: 0.9rem !important;
+        text-align: left !important;
+        margin-bottom: 0 !important;
     }
 
     /* 显示汉堡菜单按钮 */
     .mobile-menu-toggle {
-        display: flex;
+        display: flex !important;
+        order: 2;
     }
 
     /* 隐藏导航链接，直到被打开 */
     .nav-links {
-        position: fixed;
-        left: -100%;
-        top: 60px;
-        flex-direction: column;
-        background-color: #2c3e50;
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        padding: 1rem 0;
-        max-height: calc(100vh - 60px);
-        overflow-y: auto;
+        position: fixed !important;
+        left: -100% !important;
+        top: 60px !important;
+        flex-direction: column !important;
+        background-color: #2c3e50 !important;
+        width: 100% !important;
+        text-align: center !important;
+        transition: left 0.3s ease-in-out !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
+        padding: 1rem 0 !important;
+        max-height: calc(100vh - 60px) !important;
+        overflow-y: auto !important;
+        margin: 0 !important;
     }
 
     /* 菜单打开状态 */
@@ -674,7 +681,22 @@ footer {
 
     /* 轮播图适配 */
     .carousel-container {
-        padding: 0 0.5rem;
+        padding: 0;
+        margin: 0 auto;
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+
+    .carousel-wrapper {
+        width: 100% !important;
+    }
+
+    .carousel-slide {
+        min-width: 100% !important;
+        width: 100% !important;
+        flex-shrink: 0 !important;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
 
     .carousel-slide img {
@@ -686,16 +708,21 @@ footer {
     .carousel-slide h4 {
         font-size: 1.3rem;
         padding: 0 1rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .carousel-slide p {
         font-size: 0.95rem;
         padding: 0 1rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .carousel-btn {
         font-size: 1.2rem;
         padding: 0.5rem 0.7rem;
+        z-index: 10;
     }
 
     .carousel-btn.prev {
@@ -704,6 +731,11 @@ footer {
 
     .carousel-btn.next {
         right: 0.3rem;
+    }
+
+    .intro-section {
+        overflow: hidden;
+        padding: 1rem !important;
     }
 
     /* 研究页面 */
