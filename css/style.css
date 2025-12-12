@@ -313,6 +313,11 @@ main {
     margin-top: 2rem;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 /* 出版物页面样式 */
 .publications-section {
     max-width: 800px;
@@ -372,19 +377,26 @@ main {
     margin: 2rem 0;
 }
 
-.publications-section img {
-    max-width: 100%;
-    height: auto;
-    margin: 1rem 0;
-    border: none;
-    box-shadow: none;
-    display: inline-block;
+.publication-image-container {
+    text-align: center;
+    margin: 2rem 0;
 }
 
-.publications-section img:hover {
-    box-shadow: none;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
+.publication-image-container img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.publication-image-container img:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0.95;
+    transition: all 0.3s ease;
 }
 
 /* 新闻页面样式 */
@@ -525,25 +537,35 @@ footer {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+    /* 导航栏 */
     .navbar {
         flex-direction: column;
         padding: 1rem;
     }
 
     .logo h1 {
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-align: center;
+        margin-bottom: 0.5rem;
     }
 
     .nav-links {
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         flex-direction: column;
         width: 100%;
+        align-items: center;
     }
 
     .nav-links li {
-        margin: 0.5rem 0;
+        margin: 0.3rem 0;
         text-align: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 0.5rem;
+        display: block;
     }
 
     .dropdown-content {
@@ -551,35 +573,291 @@ footer {
         box-shadow: none;
         background-color: #34495e;
         margin-left: 0;
+        margin-top: 0.3rem;
+    }
+
+    .dropdown-content a {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+
+    /* 主要内容区域 */
+    main {
+        margin-top: 220px; /* 增加导航栏高度补偿 */
+        padding: 1rem;
+    }
+
+    /* Hero区域 */
+    .hero {
+        padding: 3rem 1.5rem;
     }
 
     .hero h2 {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
+    /* 内容区域 */
     .content {
-        padding: 2rem 1rem;
+        padding: 1.5rem 0.5rem;
     }
 
+    .content h3 {
+        font-size: 1.5rem;
+    }
+
+    /* 轮播图适配 */
+    .carousel-container {
+        padding: 0 0.5rem;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .carousel-slide h4 {
+        font-size: 1.3rem;
+        padding: 0 1rem;
+    }
+
+    .carousel-slide p {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+
+    .carousel-btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 0.7rem;
+    }
+
+    .carousel-btn.prev {
+        left: 0.3rem;
+    }
+
+    .carousel-btn.next {
+        right: 0.3rem;
+    }
+
+    /* 研究页面 */
+    .research-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .research-item {
+        padding: 1.5rem;
+    }
+
+    .research-item h4 {
+        font-size: 1.3rem;
+    }
+
+    .research-item p {
+        font-size: 0.95rem;
+    }
+
+    /* 团队成员 */
     .member-info {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 1.5rem;
     }
 
-    .research-grid {
-        grid-template-columns: 1fr;
+    .member-photo {
+        width: 180px;
+        height: 180px;
+    }
+
+    .member-details .title {
+        font-size: 1.1rem;
     }
 
     .members-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
+    .member-card {
+        padding: 1.5rem;
+    }
+
+    .member-card img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .member-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .member-card p {
+        font-size: 0.9rem;
+    }
+
+    /* 出版物页面 */
+    .publications-section {
+        padding: 0 1rem;
+    }
+
+    .publications-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .publications-section ol,
+    .publications-section li {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .publication-image-container img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 新闻页面 */
+    .news-section {
+        padding: 0 0.5rem;
+    }
+
+    .news-item {
+        padding: 1.5rem;
+    }
+
+    .news-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .news-content {
+        font-size: 0.95rem;
+    }
+
+    /* 联系页面 */
     .info-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .info-item {
+        padding: 1.5rem;
+    }
+
+    .info-item h4 {
+        font-size: 1.2rem;
+    }
+
+    .info-item p {
+        font-size: 0.9rem;
+    }
+
+    /* 地图容器 */
+    .map-container iframe {
+        height: 300px;
+    }
+
+    /* 访客统计 */
+    .visitor-map-section {
+        margin-top: 2rem;
+    }
+
+    .visitor-map-section h3 {
+        font-size: 1.8rem;
+    }
+
+    /* 回到顶部按钮 */
+    #backToTop {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.3rem;
+    }
+
+    /* 通用图片适配 */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 表格适配 */
+    .table-responsive {
+        margin: 0 -0.5rem;
+    }
+
+    table {
+        font-size: 0.8rem;
+        min-width: 100%;
+    }
+
+    table th,
+    table td {
+        padding: 0.5rem !important;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    table th:last-child,
+    table td:last-child {
+        white-space: normal;
+        min-width: 150px;
+    }
+
+    /* 标题适配 */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+    h4 { font-size: 1.1rem; }
+}
+
+/* 超小屏幕额外适配 */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    main {
+        margin-top: 240px;
+    }
+
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-slide h4 {
+        font-size: 1.1rem;
+    }
+
+    .carousel-slide p {
+        font-size: 0.85rem;
+    }
+
+    .content h3 {
+        font-size: 1.3rem;
+    }
+
+    #backToTop {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 1.1rem;
     }
 } 
