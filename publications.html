@@ -40,6 +40,21 @@
         .publication-entry ol {
             margin-bottom: 0.5rem;
         }
+        .publication-nav {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+        .publication-nav a {
+            margin-right: 1.5rem;
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .publication-nav a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +76,7 @@
                     </ul>
                 </li>
                 <li><a href="publications.html">Publications</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
                 <li><a href="news.html">News</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -78,7 +94,26 @@
                 <p style="margin-bottom: 1rem;"><a href="https://scholar.google.com/citations?hl=zh-CN&user=WXs_rA4AAAAJ&view_op=list_works&sortby=pubdate" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar Profile</a></p>
                 <p style="margin-bottom: 2rem;"><em>* denotes equal first-authorship; ✉ denotes corresponding author</em></p>
 
-                <h3>2025-present</h3>
+                <div class="publication-nav">
+                    <strong>Jump to:</strong>
+                    <a href="#submitted">Submitted</a>
+                    <a href="#recent">2025-present</a>
+                    <a href="#prior">2017-2024 (Prior to HKBU)</a>
+                </div>
+
+                <h3 id="submitted">Submitted</h3>
+                <hr />
+                <div class="publication-entry">
+                    <ol class="reversed">
+                        <li value="25">
+                            <span class="publication-title">"Bioinspired in-sensor orthogonal adaptation for robust all-weather multispectral vision"</span><br>
+                            Z. Wang*, <span class="author-highlight">S. Li</span>*✉, Y. Tang, J. Han, M. Gao, X. Chen, F. Zhu✉<br>
+                            <span class="journal-name">Submitted</span> (2026).
+                        </li>
+                    </ol>
+                </div>
+
+                <h3 id="recent">2025-present</h3>
                 <hr />
                 <div class="publication-entry">
                     <ol class="reversed">
@@ -132,7 +167,7 @@
                     </div>
                 </div>
 
-                <h3>2017-2024 (Prior to HKBU)</h3>
+                <h3 id="prior">2017-2024 (Prior to HKBU)</h3>
                 <hr />
                 <div class="publication-entry">
                     <ol class="reversed">
@@ -364,4 +399,4 @@
 
     <script src="js/main.js"></script>
 </body>
-</html> 
+</html>
